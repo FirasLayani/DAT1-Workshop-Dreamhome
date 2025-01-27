@@ -56,3 +56,9 @@ ORDER BY salary DESC;
 
 -- 6.21
 -- List the properties that are handled by staff who work in the branch at '163 Main St'.
+
+-- 6.22
+-- Find all staff whose salary is larger than the salary of at least one member of staff at branch B003.
+
+-- 6.23
+-- Find all staff whose salary is larger than the salary of every member of staff at branch B003.

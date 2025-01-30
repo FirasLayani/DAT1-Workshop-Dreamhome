@@ -56,9 +56,26 @@ ORDER BY salary DESC;
 
 -- 6.21
 -- List the properties that are handled by staff who work in the branch at '163 Main St'.
+SELECT propertyno, street, type, street
+FROM propertyforrent
+WHERE staffNo IN (SELECT staffNo
+                  FROM staff
+                  WHERE branchNo = (SELECT branchNo
+                                    FROM branch
+                                    WHERE street = '163 Main St'));
 
 -- 6.22
 -- Find all staff whose salary is larger than the salary of at least one member of staff at branch B003.
+SELECT staffno, fname, lname
+FROM staff
+WHERE salary > ANY(SELECT salary
+                    FROM staff
+                    WHERE branchNo = 'BOO3')
 
 -- 6.23
 -- Find all staff whose salary is larger than the salary of every member of staff at branch B003.
+SELECT staffno, fname, lname
+FROM staff
+WHERE salary > ALL(SELECT salary
+                    FROM staff
+                    WHERE branchNo = 'BOO3')
